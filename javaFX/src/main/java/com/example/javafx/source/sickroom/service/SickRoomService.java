@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SickRoomService {
-    private ArrayList<SickRoom> sickRooms =new ArrayList<>();
+    private static ArrayList<SickRoom> sickRooms =new ArrayList<>();
 
     public ArrayList<SickRoom> getSickRooms(int first,int end){
         int size=sickRooms.size();
@@ -30,7 +30,7 @@ public class SickRoomService {
         return new ArrayList<> (sickRooms.subList(0,size));
     }
     //查找指定病房号的信息
-    public SickRoom findOnewardNo(String wardNo) throws SQLException{
+    public SickRoom findOnewardNo(String wardNo) {
         for (SickRoom sickRoom : sickRooms) {
             if (wardNo.equals(sickRoom.getWardNo())){
                 return sickRoom;

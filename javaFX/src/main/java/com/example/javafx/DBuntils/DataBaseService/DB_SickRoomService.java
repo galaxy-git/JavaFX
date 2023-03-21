@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+//*除非使用=或不使用条件查询,否则不能用?占位符
 //数据库关闭
 public class DB_SickRoomService {
     //连接数据库
@@ -46,10 +47,11 @@ public class DB_SickRoomService {
         int first_num=(page-1)*pageSize+1;
         int end_num=first_num+pageSize-1;
         SickRoom sR;
-        String sql="select 病房号,病房类型,所属科室,床位数,剩余床位数,负责医生 from DB_sickroom having count(病房号) between ? and ? order by 病房号";
+        //top 后不能接占位符
+        String sql="select top "+pageSize+" * from (select top "+end_num+" * from DB_sickroom order by 病房号) s order by s.病房号 desc";
         PreparedStatement ps=connection.prepareStatement(sql);
-        ps.setInt(1,first_num);
-        ps.setInt(2,end_num);
+//        ps.setInt(1,first_num);
+//        ps.setInt(2,end_num);
         ResultSet result= ps.executeQuery();
         while (result.next()){
             sR = new SickRoom(result.getString(1), result.getString(2),
@@ -63,10 +65,11 @@ public class DB_SickRoomService {
     public static ArrayList<SickRoom> getData(String key,String value) throws SQLException{
         ArrayList<SickRoom> sickRooms=new ArrayList<>();
         SickRoom sR;
-        String sql="select 病房号,病房类型,所属科室,床位数,剩余床位数,负责医生 from DB_sickroom where ? like ? order by 病房号";
+        //like不能用占位符
+        String sql="select 病房号,病房类型,所属科室,床位数,剩余床位数,负责医生 from DB_sickroom where "+key+" like '%"+value+"%' order by 病房号";
         PreparedStatement ps=connection.prepareStatement(sql);
-        ps.setString(1,key);
-        ps.setString(2,'%'+value+'%');
+//        ps.setString(1,key);
+//        ps.setString(2,"'%"+value+"%'");
         ResultSet result= ps.executeQuery();
         while (result.next()){
             sR = new SickRoom(result.getString(1), result.getString(2),

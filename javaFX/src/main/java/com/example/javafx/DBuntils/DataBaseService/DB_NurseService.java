@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+//*除非使用=或不使用条件查询,否则不能用?占位符
 public class DB_NurseService {
     //连接数据库
     static Connection connection;
@@ -45,10 +46,11 @@ public class DB_NurseService {
         int first_num=(page-1)*pageSize+1;
         int end_num=first_num+pageSize-1;
         Nurse ns;
-        String sql="select 护士编号,护士姓名,性别,职称,负责病房编号 from DB_nurse having count(护士编号) between ? and ? order by 护士编号";
+        //top 后不能接占位符
+        String sql="select top "+pageSize+" * from (select top "+end_num+" * from DB_nurse order by 护士编号) n order by n.护士编号 desc";
         PreparedStatement ps=connection.prepareStatement(sql);
-        ps.setInt(1,first_num);
-        ps.setInt(2,end_num);
+//        ps.setInt(1,first_num);
+//        ps.setInt(2,end_num);
         ResultSet result= ps.executeQuery();
         while (result.next()){
             ns = new Nurse(result.getString(1), result.getString(2),
@@ -62,10 +64,11 @@ public class DB_NurseService {
     public static ArrayList<Nurse> getData(String key,String value) throws SQLException{
         ArrayList<Nurse> nurses=new ArrayList<>();
         Nurse ns;
-        String sql="select 护士编号,护士姓名,性别,职称,负责病房编号 from DB_nurse where ? like ? order by 护士编号";
+        //like不能用占位符
+        String sql="select 护士编号,护士姓名,性别,职称,负责病房编号 from DB_nurse where "+key+" like '%"+value+"%' order by 护士编号";
         PreparedStatement ps=connection.prepareStatement(sql);
-        ps.setString(1,key);
-        ps.setString(2,'%'+value+'%');
+//        ps.setString(1,key);
+//        ps.setString(2,"'%"+value+"%'");
         ResultSet result= ps.executeQuery();
         while (result.next()){
             ns = new Nurse(result.getString(1), result.getString(2),

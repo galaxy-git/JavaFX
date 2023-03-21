@@ -5,6 +5,7 @@ import com.example.javafx.source.sickroom.service.SickRoomService;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
@@ -19,12 +20,14 @@ public class AddSickroomController {
 
     public void okClick(MouseEvent mouseEvent) throws SQLException {
         SickRoom sickRoom=new SickRoom();
-        sickRoom.setWardNo(String.valueOf(txtWardNo));
-        sickRoom.setWardType(String.valueOf(txtWardType));
-        sickRoom.setDepartment(String.valueOf(txtDepartment));
-        sickRoom.setNumberofbeds(Integer.parseInt(String.valueOf(txtNumberofbeds)));
-        sickRoom.setRemainingbeds(Integer.parseInt(String.valueOf(txtRemaingbeds)));
-        sickRoom.setWardDoctor(String.valueOf(txtWardDoctor));
+        sickRoom.setWardNo(txtWardNo.getText());
+        sickRoom.setWardType(txtWardType.getText());
+        sickRoom.setDepartment(txtDepartment.getText());
+        sickRoom.setNumberofbeds(Integer.parseInt(txtNumberofbeds.getText()));
+        sickRoom.setRemainingbeds(Integer.parseInt(txtRemaingbeds.getText()));
+        sickRoom.setWardDoctor(txtWardDoctor.getText());
         sickRoomService.addSickRoom(sickRoom);
+        Stage stage=(Stage) txtWardNo.getScene().getWindow();
+        stage.close();
     }
 }

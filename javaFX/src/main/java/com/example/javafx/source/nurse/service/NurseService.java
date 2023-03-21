@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class NurseService {
-    private ArrayList<Nurse> nurses =new ArrayList<>();
+    private static ArrayList<Nurse> nurses =new ArrayList<>();
 
     public ArrayList<Nurse> getNurses(int first,int end){
         int size=nurses.size();
@@ -30,7 +30,7 @@ public class NurseService {
         return new ArrayList<>(nurses.subList(0,size));
     }
     //查找指定护士编号的信息
-    public Nurse findOnenurse_number(String nurse_number) throws SQLException{
+    public Nurse findOnenurse_number(String nurse_number) {
         for (Nurse nurse:nurses) {
             if (nurse_number.equals(nurse.getNurse_number())){
                 return nurse;

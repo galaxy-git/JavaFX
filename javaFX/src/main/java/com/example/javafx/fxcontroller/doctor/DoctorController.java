@@ -43,7 +43,7 @@ public class DoctorController implements Initializable {
         //下拉框填充数据，sitem为ComboBox下拉列表组件的fx:id
         comboboxFind.getItems().add("分页查询");
         comboboxFind.getItems().add("医生编号");
-        comboboxFind.getItems().add("负责病房编号");
+        comboboxFind.getItems().add("所属科室");
         //选中下拉框中的第一项
         comboboxFind.getSelectionModel().select(0);
         //调用数据操作类获取数据加载数据表格（TableView）
@@ -68,13 +68,13 @@ public class DoctorController implements Initializable {
     public void findClick(MouseEvent actionEvent) throws SQLException {
         if(txtKey.getText().isEmpty())return;
         //从数据库查询
-        if(comboboxFind.getId().equals("分页查询")) {
+        if(comboboxFind.getSelectionModel().getSelectedItem().equals("分页查询")) {
             page=Integer.parseInt(txtKey.getText());
             initTable(doctorService.getDoctors(page));
         }
         else {
             page=1;
-            initTable(doctorService.fin_Doctor(comboboxFind.getId(), txtKey.getText()));
+            initTable(doctorService.fin_Doctor(comboboxFind.getSelectionModel().getSelectedItem(), txtKey.getText()));
         }
     }
     //编辑
@@ -101,7 +101,7 @@ public class DoctorController implements Initializable {
     //添加
     public void addButton(ActionEvent actionEvent) throws IOException{
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource(
-                "/com/example/javafx/fxml/doctor/editDoctor-view.fxml"));
+                "/com/example/javafx/fxml/doctor/addDoctor-view.fxml"));
         Stage stage=new Stage();
         Scene scene=new Scene(fxmlLoader.load());
         stage.setScene(scene);
@@ -117,7 +117,8 @@ public class DoctorController implements Initializable {
         if(page==0)return;
         page=page+1;
         //从数据库查询
-        if(comboboxFind.getId().equals("分页查询")) {
+        //comboboxFind.getSelectionModel().getSelectedItem()获取下拉框第一项
+        if(comboboxFind.getSelectionModel().getSelectedItem().equals("分页查询")) {
            initTable(doctorService.getDoctors(page));
         }
         //从保留的查询结果查询

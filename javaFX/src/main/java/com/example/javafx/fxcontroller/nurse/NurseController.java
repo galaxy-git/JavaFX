@@ -68,13 +68,13 @@ public class NurseController implements Initializable {
     public void findClick(MouseEvent actionEvent) throws SQLException {
         if(txtKey.getText().isEmpty())return;
         //从数据库查询
-        if(comboboxFind.getId().equals("分页查询")) {
+        if(comboboxFind.getSelectionModel().getSelectedItem().equals("分页查询")) {
             page=Integer.parseInt(txtKey.getText());
             initTable(nurseService.getNurses(page));
         }
         else {
             page=1;
-            initTable(nurseService.fin_Nurse(comboboxFind.getId(), txtKey.getText()));
+            initTable(nurseService.fin_Nurse(comboboxFind.getSelectionModel().getSelectedItem(), txtKey.getText()));
         }
     }
     //编辑
@@ -101,7 +101,7 @@ public class NurseController implements Initializable {
     //添加
     public void addButton(ActionEvent actionEvent) throws IOException{
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource(
-                "/com/example/javafx/fxml/nurse/editNurse-view.fxml"));
+                "/com/example/javafx/fxml/nurse/addNurse-view.fxml"));
         Stage stage=new Stage();
         Scene scene=new Scene(fxmlLoader.load());
         stage.setScene(scene);
@@ -117,7 +117,8 @@ public class NurseController implements Initializable {
         if(page==0)return;
         page=page+1;
         //从数据库查询
-        if(comboboxFind.getId().equals("分页查询")) {
+        //comboboxFind.getSelectionModel().getSelectedItem()获取下拉框第一项
+        if(comboboxFind.getSelectionModel().getSelectedItem().equals("分页查询")) {
             initTable(nurseService.getNurses(page));
         }
         //从保留的查询结果查询
