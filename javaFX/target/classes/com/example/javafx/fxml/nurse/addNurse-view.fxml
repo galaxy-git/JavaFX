@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="300.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.fxcontroller.nurse.AddNurseController">
+    <Label layoutX="28.0" layoutY="15.0" text="护士编号" />
+    <Label layoutX="28.0" layoutY="55.0" text="护士姓名" />
+    <Label layoutX="28.0" layoutY="95.0" text="性别" />
+    <Label layoutX="28.0" layoutY="135.0" text="职称" />
+    <Label layoutX="28.0" layoutY="175.0" text="负责病房编号" />
+    <TextField fx:id="txt_nurse_number" layoutX="110.0" layoutY="10.0" />
+    <TextField fx:id="txt_nurse_name" layoutX="110.0" layoutY="50.0" />
+    <TextField fx:id="txt_nurse_sex" layoutX="110.0" layoutY="90.0" />
+    <TextField fx:id="txt_nurse_titles" layoutX="110.0" layoutY="130.0" />
+    <TextField fx:id="txt_nurse_sickroom" layoutX="110.0" layoutY="170.0" />
+    <Button layoutX="133.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#okClick" text="确定" />
+</AnchorPane>

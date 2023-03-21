@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="300.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.fxcontroller.sickroom.AddSickroomController">
+    <Label layoutX="28.0" layoutY="15.0" text="病房号" />
+    <Label layoutX="28.0" layoutY="55.0" text="病房类型" />
+    <Label layoutX="28.0" layoutY="95.0" text="所属科室" />
+    <Label layoutX="28.0" layoutY="135.0" text="床位数" />
+    <Label layoutX="28.0" layoutY="175.0" text="剩余床位数" />
+    <Label layoutX="28.0" layoutY="215.0" text="负责医生" />
+    <TextField fx:id="txtWardNo" layoutX="110.0" layoutY="10.0" />
+    <TextField fx:id="txtWardType" layoutX="110.0" layoutY="50.0" />
+    <TextField fx:id="txtDepartment" layoutX="110.0" layoutY="90.0" />
+    <TextField fx:id="txtNumberofbeds" layoutX="110.0" layoutY="130.0" />
+    <TextField fx:id="txtRemaingbeds" layoutX="110.0" layoutY="170.0" />
+    <TextField fx:id="txtWardDoctor" layoutX="110.0" layoutY="210.0" />
+    <Button layoutX="133.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#okClick" text="确定" />
+</AnchorPane>
