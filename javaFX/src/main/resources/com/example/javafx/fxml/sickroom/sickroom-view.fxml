@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.HBox?>
+<SplitPane dividerPositions="1.0E-9" orientation="VERTICAL" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.fxcontroller.sickroom.SickroomController">
+    <cursor>
+        <Cursor fx:constant="HAND" />
+    </cursor>
+    <HBox prefHeight="25.0" prefWidth="100.0">
+        <ComboBox fx:id="comboboxFind" prefWidth="90.0" />
+        <TextField fx:id="txtKey" promptText="1~15页" />
+        <Button mnemonicParsing="false" onMouseClicked="#findClick" text="查询" />
+        <Button mnemonicParsing="false" onMouseClicked="#nextClick" text="下一页" />
+    </HBox>
+    <TableView fx:id="tableSickroom">
+      <columns>
+          <TableColumn fx:id="towardNo" prefWidth="75.0" text="病房号" />
+          <TableColumn fx:id="towardType" prefWidth="75.0" text="病房类型" />
+          <TableColumn fx:id="toDepartment" prefWidth="75.0" text="所属科室" />
+          <TableColumn fx:id="toNumberofbeds" prefWidth="75.0" text="床位数" />
+          <TableColumn fx:id="toRemainingbeds" prefWidth="75.0" text="剩余床位数" />
+          <TableColumn fx:id="towardDoctor" prefWidth="75.0" text="负责医生" />
+      </columns>
+        <contextMenu>
+          <ContextMenu>
+              <items>
+                  <MenuItem fx:id="editClick" mnemonicParsing="false" onAction="#editButton" text="编辑" />
+                  <MenuItem fx:id="addClick" mnemonicParsing="false" onAction="#addButton" text="添加" />
+                  <MenuItem fx:id="deleteClick" mnemonicParsing="false" onAction="#deleteButton" text="删除" />
+              </items>
+          </ContextMenu>
+        </contextMenu>
+        <columnResizePolicy>
+          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+</SplitPane>
