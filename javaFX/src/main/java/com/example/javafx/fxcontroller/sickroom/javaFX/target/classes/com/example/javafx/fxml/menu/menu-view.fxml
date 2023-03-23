@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<BorderPane fx:id="menuPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.fxcontroller.menu.MenuController">
+   <top>
+      <HBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+         <HBox alignment="TOP_CENTER" prefHeight="23.0" prefWidth="357.0" HBox.hgrow="ALWAYS">
+            <Label contentDisplay="CENTER" prefHeight="50.0" prefWidth="100.0" text="医院病房管理系统" textAlignment="RIGHT" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+         </Label>
+         </HBox>
+         <ImageView fx:id="sexist" fitHeight="28.0" fitWidth="26.0" nodeOrientation="INHERIT" onMouseClicked="#existsys" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+            <viewport>
+               <Rectangle2D />
+            </viewport>
+            <HBox.margin>
+               <Insets right="10.0" />
+            </HBox.margin>
+            <Image url="@../../image/退出.png" />
+         </ImageView>
+         <Label prefHeight="30.0" prefWidth="61.0" text="退出系统" textFill="#098bed">
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+         </Label>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <fx:include source="left-menu-view.fxml" />
+   </left>
+   <center>
+      <SplitPane orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
