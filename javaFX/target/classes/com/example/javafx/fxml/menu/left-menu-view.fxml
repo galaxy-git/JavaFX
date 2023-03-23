@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0"
       prefWidth="100.0" xmlns:fx="http://javafx.com/javafx"
@@ -10,16 +10,13 @@
          <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#leftmenuClick01" text="病房管理" />
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#leftmenuClick02" text="病房床位管理" />
+         <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#leftmenuClick02" text="病房医生管理" />
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#leftmenuClick03" text="病房医生管理" />
+         <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#leftmenuClick03" text="病房护士管理" />
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#leftmenuClick04" text="病房护士管理" />
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#leftmenuClick05" text="病人管理" />
+         <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#leftmenuClick04" text="病人管理" />
       </HBox>
    </VBox>
 </VBox>

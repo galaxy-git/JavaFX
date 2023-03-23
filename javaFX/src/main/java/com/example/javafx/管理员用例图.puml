@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+:管理员: as Admin
+
+rectangle  系统功能 as a{
+     usecase "病房管理" as s
+     usecase "病房医生管理" as d
+     usecase "病房护士管理" as n
+}
+rectangle 操作 as b{
+    usecase "添加" as add
+    usecase "删除" as delete
+    usecase "查询" as query
+    usecase "修改" as edit
+}
+Admin-->a
+a-down->b:执行
+b-->(数据库)
+(数据库)-->(文件):写入
+(文件).-->(数据库):读取
+@enduml

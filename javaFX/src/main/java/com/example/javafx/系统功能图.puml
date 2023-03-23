@@ -1,0 +1,12 @@
+@startuml
+
+
+rectangle "医院病房管理系统" as a
+rectangle "病房管理" as b
+rectangle "病房医生管理" as c
+rectangle "病房护士管理" as d
+a-->b
+a-->c
+a-->d
+
+@enduml
